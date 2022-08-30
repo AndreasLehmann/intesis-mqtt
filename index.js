@@ -65,6 +65,9 @@ function publishUpdate(deviceId, newState) {
     debug('Publishing target temperature...');
     client.publish('climate/' + deviceTopic + '/setpoint/state', newState.targetTemperature.toString());
 
+    debug('Publishing outdoor temperature...',newState.outdoorTemperature.toString() );
+    client.publish('climate/' + deviceTopic + '/outdoorTemperature/state', newState.outdoorTemperature.toString());
+
     debug('Publishing fan mode...');
     client.publish('climate/' + deviceTopic + '/fan/state', newState.fanMode);
     

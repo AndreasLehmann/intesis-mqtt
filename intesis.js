@@ -22,6 +22,7 @@ var INTESIS_MAP = {
     13: {name: 'working_hours'},
     35: {name: 'setpoint_min'},
     36: {name: 'setpoint_max'},
+    37: {name: 'outdoor_temperature'},
     60002: {name: 'rssi'}
 }
 
@@ -127,17 +128,18 @@ function updateRemoteDeviceStatus(deviceId) {
     var power = devices[deviceId].power;
     var currentTemperature = devices[deviceId].temperature / 10;
     var targetTemperature = devices[deviceId].setpoint / 10;
+    var outdoorTemperature = devices[deviceId].outdoor_temperature / 10;
     var fanMode = devices[deviceId].fan_speed;
     var operationMode = devices[deviceId].mode;
     var swingMode = devices[deviceId].vvane;
 
-    if(!power || !currentTemperature || !targetTemperature || !fanMode || !operationMode || !swingMode) {
+    if(!power || !currentTemperature || !targetTemperature || !fanMode || !operationMode || !swingMode || !outdoorTemperature) {
         debug('Not updating remote device status because some state values are missing');
         return;
     }
 
     debug('Updating remote device statuses');
-    stateChangeHandler(deviceId, { power, currentTemperature, targetTemperature, fanMode, operationMode, swingMode });
+    stateChangeHandler(deviceId, { power, currentTemperature, targetTemperature, outdoorTemperature, fanMode, operationMode, swingMode });
 }
 
 function updateLocalRSSI(deviceId, value) {

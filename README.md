@@ -3,6 +3,14 @@ Because I am not experienced with Python I was having difficulty getting the [py
 
 Instead of battling with that I decided to take another approach and re-implemented the Intesis integration in Node.js and utilised the existing [MQTT HVAC](https://www.home-assistant.io/components/climate.mqtt/) component of Home Assistant instead
 
+## Changes (Leh)
+Added resolving the Outdoor temperature from the external unit.
+
+Tested with:
+- MH-AC-WIFI-1
+- Device Firmware: 1.4.7; 1.3.3; 1.5; 1.0.2.0
+- Wireless Firmware: 1.2.0
+
 # Overview of how it works
 I set up a MQTT HVAC component in Home Assistant and configured a number of MQTT topics to read the current state of my heat pumps, and publish requested changes. An example configuration is [here](https://github.com/bradleyscott/home-automation/blob/master/homeassistant/climate/bedroom_ac.yaml) and shown below:
 ```
